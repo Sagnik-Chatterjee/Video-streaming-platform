@@ -16,7 +16,6 @@ export default function EditCoverPage(){
         dataPayload.append("coverImage",cover)
         try{
             const response=await api.patch('/users/cover-image',dataPayload)
-            console.log(response)
             if(response.status===200){
                 navigate('/')
             }

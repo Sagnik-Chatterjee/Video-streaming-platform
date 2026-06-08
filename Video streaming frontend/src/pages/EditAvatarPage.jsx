@@ -16,7 +16,6 @@ export default function EditAvatarPage(){
         dataPayload.append("avatar",avatar)
         try{
             const response=await api.patch('/users/avatar',dataPayload)
-            console.log(response)
             if(response.status===200){
                 navigate('/')
             }

@@ -16,7 +16,6 @@ export default function UpdateThumbnail(){
         dataPayload.append("thumbnail",thumbnail)
         try{
             const response=await api.patch(`/videos/thumbnail/${id}`,dataPayload)
-            console.log(response)
             if(response.status===200){
                 navigate('/')
             }

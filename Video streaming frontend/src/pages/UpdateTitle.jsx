@@ -17,7 +17,6 @@ export default function UpdateTitle(){
         dataPayload.append("title",title)
         try{
             const response=await api.patch(`/videos/title/${id}`,title)
-            console.log(response)
             if(response.status===200){
                 navigate('/')
             }

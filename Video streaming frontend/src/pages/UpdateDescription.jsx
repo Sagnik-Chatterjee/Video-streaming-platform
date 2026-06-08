@@ -15,7 +15,6 @@ export default function UpdateDescription(){
         setError("")
         try{
             const response=await api.patch(`/videos/description/${id}`,desc)
-            console.log(response)
             if(response.status===200){
                 navigate('/')
             }

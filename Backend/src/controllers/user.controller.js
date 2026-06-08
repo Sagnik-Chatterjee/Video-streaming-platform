@@ -55,7 +55,6 @@ if(existedUser){
 
 //Step 4
 //Given by multer
-console.log ("Request Files= ",req.files)
 const avatarLocalPath=req.files?.avatar[0]?.path;
 //const coverImageLocalPath=req.files?.coverImage[0]?.path;
 

@@ -53,7 +53,6 @@ export default function RegisterPage() {
       );
 
       if (response.status === 201 || response.status === 200) {
-        console.log("Registration complete:", response.data);
         navigate("/login");
       }
     } catch (err) {
