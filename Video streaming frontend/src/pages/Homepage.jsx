@@ -2,6 +2,7 @@ import  { useState, useEffect } from "react";
 import "./Homepage.css";
 import api from "../utils/api";
 import { useNavigate } from "react-router-dom";
+import capitalize from "../utils/capitalize";
 export default function VideoHomeGrid() {
   const [videos, setVideos] = useState([]);
   const [page, setPage] = useState(1);
@@ -42,8 +43,8 @@ const navigate=useNavigate()
               </span>
             </div>
             <div className="video-info-block">
-              <h4 className="video-title-heading">{v.title}</h4>
-              <p className="video-creator-name">{v.owner?.[0]?.username || "Creator"}</p>
+              <h4 className="video-title-heading">{capitalize(v.title)}</h4>
+              <p className="video-creator-name">{capitalize(v.owner[0].username)}</p>
               <p className="video-views-stat">{v.views} views</p>
             </div>
           </div>

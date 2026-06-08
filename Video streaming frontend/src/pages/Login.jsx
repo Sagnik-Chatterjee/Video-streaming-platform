@@ -2,14 +2,14 @@ import { useState } from 'react';
 import api from '../utils/api';
 import { useAuth } from '../context/AuthContext';
 import './Login.css';
-
+import { useNavigate } from 'react-router-dom';
 export default function Login() {
   const { login } = useAuth();
   const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-
+const navigate=useNavigate()
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -29,6 +29,9 @@ export default function Login() {
       
       login(user, accessToken);
       alert("Logged in successfully!");
+      if(response.status===200 ){
+        navigate('/')
+      }
       
     } catch (err) {
       const errorMessage = err.response?.data?.message || "An authentication error occurred.";

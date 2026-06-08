@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom"
 import { useNavigate } from "react-router-dom";
 import "./ProfilePage.css"
 import { useAuth } from "../context/AuthContext";
+import capitalize from "../utils/capitalize";
 export default function ProfilePage(){
        const {username}=useParams();
     const [profile,setProfile]=useState([]);
@@ -16,7 +17,6 @@ export default function ProfilePage(){
         const response=await api.get(`/users/c/${username}`)
         const{data}=response
         const profileData=data.data
-        console.log(profileData)
         setProfile(profileData)
         }catch(e){
             console.log("Error",e)
@@ -73,7 +73,7 @@ const handleSubscribeClick=async()=>{
               </div>
               
               <div className="profile-meta-text">
-                <h2 className="profile-username">@{profile.username}</h2>
+                <h2 className="profile-username">{capitalize(profile.username)}</h2>
                 <div className="profile-stats-row">
                   <span className="stat-badge">{profile.subscribersCount} subscribers</span>
                   <span className="stat-divider">•</span>
@@ -117,7 +117,7 @@ const handleSubscribeClick=async()=>{
                       </div>
                       
                       <div className="video-info-block">
-                        <h4 className="video-title-heading" title={v.title}>{v.title}</h4>
+                        <h4 className="video-title-heading" title={v.title}>{capitalize(v.title)}</h4>
                         <p className="video-views-stat">{v.views} views</p>
                       </div>
                     </div>

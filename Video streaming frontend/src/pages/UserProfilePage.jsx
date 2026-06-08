@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import api from "../utils/api";
 import "./UserProfilePage.css";
 import { useNavigate } from "react-router-dom";
+import capitalize from "../utils/capitalize";
 export default function UserProfilePage() {
   const [activeTab, setActiveTab] = useState("videos");
   const{id}=useParams()
@@ -11,22 +12,56 @@ export default function UserProfilePage() {
   const [subscription,setSubscription]=useState([])
   const[subscribers,setSubscribers]=useState(0)
   const [reload,setReload]=useState(0)
+  const[loading,setLoading]=useState(false)
+  const [error,setError]=useState("")
   const navigate=useNavigate();
-const fetchUser=async()=>{
+  const fetchUser=async()=>{
+  setError("")
+  setLoading(true)
+  try{
     const response=await api.get('/users/current-user')
     setUserProfile(response.data.data)
-}
-const fetchVideos=async()=>{
+  }catch(e){
+    setError(e.response?.data?.message || "Some error occured" )
+  }finally{
+    setLoading(false)
+  }
+  }
+  const fetchVideos=async()=>{
+  setError("")
+  setLoading(true)
+  try{
     const response=await api.get(`/videos/channel/${id}`)
     setVideos(response.data.data)
-}
+  }catch(e){
+    setError(e.response?.data?.message || "Some error occured" )
+  }finally{
+    setLoading(false)
+  }
+  }
 const fetchSubscription=async()=>{
+  setLoading(true)
+  setError("")
+  try{
   const response=await api.get(`/subscriptions/c/${id}`)
   setSubscription(response.data.data)
+  }catch(e){
+    setError(e.response?.data?.message || "Some error occured" )
+  }finally{
+    setLoading(false)
+  }
 }
 const fetchSubscribed=async()=>{
+  setLoading(true)
+  setError("")
+  try{
   const response=await api.get(`/subscriptions/u/${id}`)
   setSubscribers(response?.data?.data?.length)
+  }catch(e){
+    setError(e.response?.data?.message || "Some error occured" )
+  }finally{
+    setLoading(false)
+  }
 }
 useEffect(()=>{
     fetchUser()
@@ -57,11 +92,12 @@ const handleDeleteVideo=async(id)=>{
     const response=await api.patch(`/videos/video/${id}`)
     setReload((e)=>e+1)
   }catch(e){
-    console.log("Error while deleting",e)
+    setError(e.response?.data?.message || "Some error occured" )
   }
 }
   return (
-    userProfile.length>0 && videos.length>0 ? <div>Loading Data...</div>:
+    error? <div>Something went wrong...</div>:
+    loading ? <div>Loading Data...</div>:
     <div className="profile-container">
       <div className="profile-header-container">
   <div className="cover-image-frame">
@@ -78,7 +114,7 @@ const handleDeleteVideo=async(id)=>{
     </div>
     
     <div className="text-metadata-block">
-      <h2 className="profile-display-name">{userProfile.username}</h2>
+      <h2 className="profile-display-name">{capitalize(userProfile.username)}</h2>
       <p>{subscribers} Subscriber(s)</p>
     </div>
   </div>
@@ -124,7 +160,7 @@ const handleDeleteVideo=async(id)=>{
                 </span>
               </div>
               <div className="creator-video-info" onClick={()=>handleVideoClick(e._id)}>
-                <h4 className="creator-video-title" title={e.title}>{e.title}</h4>
+                <h4 className="creator-video-title" title={e.title}>{capitalize(e.title)}</h4>
                 <p className="creator-video-views">{e.views} views</p>
               </div>
               <div className="video-management-actions">

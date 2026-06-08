@@ -4,16 +4,25 @@ import { useAuth } from '../context/AuthContext';
 import { LogOut, User, Video, LogIn, UserPlus } from 'lucide-react'; // Clean modern UI icons
 import './Navbar.css';
 import { useState } from 'react';
-
+import capitalize from '../utils/capitalize';
+import api from '../utils/api';
 export default function Navbar() {
   const { user, logout } = useAuth();
   const [search,setSearch]=useState("");
   const navigate = useNavigate();
+  const handleLogout = async() => {
+  try{
+  const response=await api.post('/users/logout',{})
 
-  const handleLogout = () => {
-    logout();
-    navigate('/login');
-  };
+  if(response.status===200){
+  logout();
+  navigate('/');
+  }
+}catch(e){
+    alert("Some Error occured while logout")
+  }
+}
+
   const handleAddClick=()=>{
     if(!user){
       navigate('/login')
@@ -27,6 +36,7 @@ export default function Navbar() {
       return
     }
     const encodedQuery = encodeURIComponent(search.trim());
+    setSearch("")
     navigate(`/search?q=${encodedQuery}`);
   }
 
@@ -62,7 +72,7 @@ export default function Navbar() {
               onClick={() => navigate(`/userprofile/${user._id}`)}
             >
               <User size={18} />
-              <span>{user.username}</span>
+              <span>{capitalize(user.username)}</span>
             </button>
             
             <button className="nav-btn logout-btn" onClick={handleLogout}>

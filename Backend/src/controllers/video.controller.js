@@ -3,7 +3,7 @@ import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse";
 import {Video} from "../models/video.model.js"
 import {User} from "../models/user.model.js"
-import {uploadCloudinary} from "../utils/cloudinary.js"
+import {uploadCloudinary,deleteCloudinary} from "../utils/cloudinary.js"
 import jwt from "jsonwebtoken"
 import mongoose from "mongoose";
 
@@ -136,7 +136,6 @@ const publishAVideo = asyncHandler(async (req, res) => {
     if([title,description].some((e)=> e?.trim() ==="")){
     throw new ApiError(400, "Title and Description required")
 }
-console.log(req.headers["content-type"])
 const videoLocalPath=req.files?.videoFile?.[0]?.path;
 const thumbnailLocalPath=req.files?.thumbnail?.[0]?.path;
 if(!thumbnailLocalPath || !videoLocalPath){
@@ -268,10 +267,13 @@ const updateVideoThumbnail= asyncHandler(async (req,res)=>{
 
 const deleteVideo = asyncHandler(async (req, res) => {
     const { videoId } = req.params
-    const vid=await Video.findByIdAndDelete(videoId)
-    if(!vid){
+    const video = await Video.findById(videoId);
+    if(!video){
         throw new ApiError(400,"Invalid id")
     }
+    await deleteCloudinary(video.thumbnail, "image");
+    await deleteCloudinary(video.videoFile, "video");
+    const vid=await Video.findByIdAndDelete(videoId);
     return res.status(200).json(new ApiResponse(200,vid,"Video deleted Successfully!!"))
 })
 

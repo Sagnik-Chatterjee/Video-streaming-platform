@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import api from "../utils/api";
 import { useNavigate } from "react-router-dom";
 import "./SearchPage.css"
+import capitalize from "../utils/capitalize";
 export default function SearchPage(){
 const [searchParams] = useSearchParams();
   const query = searchParams.get("q");
@@ -22,7 +23,6 @@ const navigate=useNavigate()
         );
         
         const fetchedVideos = response.data.data;
-        console.log(fetchedVideos[0].owner)
         setVideos((prevVideos) => [...prevVideos, ...fetchedVideos]);
 
         if (fetchedVideos.length < LIMIT) {
@@ -52,12 +52,12 @@ const navigate=useNavigate()
           <div key={e._id} className="video-card-item" onClick={() => handleVideoClick(e._id)}>
             <div className="thumbnail-frame">
               <img src={e.thumbnail} alt="Thumbnail" className="video-thumbnail-img" />
-              <div className="video-duration-badge">{e.duration}</div>
+              <div className="video-duration-badge">{Math.floor(e.duration / 60)}:{String(Math.floor(e.duration % 60)).padStart(2, '0')}</div>
             </div>
             
             <div className="video-info-block">
-              <div className="video-title-heading">{e.title}</div>
-              <div className="video-creator-name">{e.owner[0].username}</div>
+              <div className="video-title-heading">{capitalize(e.title)}</div>
+              <div className="video-creator-name">{capitalize(e.owner[0].username)}</div>
               <div className="video-views-stat">{e.views} Views</div>
             </div>
           </div>

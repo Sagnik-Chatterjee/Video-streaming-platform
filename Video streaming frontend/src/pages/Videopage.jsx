@@ -2,10 +2,10 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
 import api from "../utils/api";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./Videopage.css"
 import { useAuth } from "../context/AuthContext";
+import capitalize from "../utils/capitalize";
 export default function Videopage(){
   const {user}=useAuth()
   const navigate=useNavigate()
@@ -21,7 +21,6 @@ export default function Videopage(){
         const response=await api.get(`/videos/video/${id}`);
         const{data}=response
         setvideoData(data.data)
-        console.log(data.data.owner)
         setOwnerId(data.data.owner)
     }catch(e){
         console.log("Error",e)
@@ -36,7 +35,6 @@ export default function Videopage(){
     
     const data = response.data.data;
     setChannelData(data)
-    console.log("Channel details loaded:", data);
   } catch (error) {
     console.error("Failed to retrieve channel profile context info:", error);
   }
@@ -69,9 +67,8 @@ export default function Videopage(){
   }
 
   try {
-    await axios.post(
-      `http://localhost:8000/api/v1/subscriptions/c/${ownerId}`,{},
-      { withCredentials: true }
+    await api.post(
+      `/subscriptions/c/${ownerId}`,{},
     );
     setSubRefresh(prev => !prev);
     
@@ -95,13 +92,13 @@ export default function Videopage(){
       </div>
       
       <div className="video-details-section">
-        <h1 className="video-title-view">{videoData.title}</h1>
+        <h1 className="video-title-view">{capitalize(videoData.title)}</h1>
         {channelData ? (
           <div className="channel-bar-container" onClick={handleProfileClick}>
             <div className="channel-profile-group">
               <img className="channel-avatar" src={channelData.avatar} alt="Channel avatar" />
               <div className="channel-text-details">
-                <p className="channel-username">{channelData.username}</p>
+                <p className="channel-username">{capitalize(channelData.username)}</p>
               </div>
             </div>
             {user?._id !== ownerId && (

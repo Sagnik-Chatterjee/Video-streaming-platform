@@ -1,5 +1,6 @@
 import api from "./utils/api"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import './AddVideoPage.css'
 export default function AddVideoPage(){
     const [formData,setFormData]=useState({
@@ -10,7 +11,7 @@ export default function AddVideoPage(){
     const [thumbnail,setthumbnail]=useState(null)
     const [loading,setLoading]=useState(null)
     const[error,setError]=useState(null)
-
+    const navigate=useNavigate()
     const handleSubmit=async (e)=>{
         e.preventDefault()
         setError("")
@@ -30,7 +31,7 @@ export default function AddVideoPage(){
                 }
             )
             if(response.status==201){
-                console.log("Video uploaded successfuly !!")
+              navigate('/')
             }
         }catch(e){
             console.log("Error in uploading:",e)
