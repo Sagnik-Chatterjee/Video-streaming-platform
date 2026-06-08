@@ -1,0 +1,144 @@
+/* Page Shell */
+.video-page-container {
+  background-color: #0f0f14;
+  min-height: 100vh;
+  padding: 24px;
+  color: #ffffff;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Player Ratio Constraint wrapper */
+.player-wrapper {
+  width: 100%;
+  max-width: 1000px;
+  aspect-ratio: 16 / 9;
+  background-color: #000000;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* Fluid HTML5 Video Frame scaling */
+.main-video-player {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Typography Information Section Layout */
+.video-details-section {
+  width: 100%;
+  max-width: 1000px;
+  margin-top: 20px;
+  text-align: left;
+}
+
+.video-title-view {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  line-height: 1.4;
+}
+
+.video-metadata-bar {
+  border-bottom: 1px solid #2a2a3a;
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+}
+
+.view-count-badge {
+  font-size: 14px;
+  color: #8c8ca1;
+  background-color: #1a1a24;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.video-description-text {
+  font-size: 15px;
+  color: #cdcdde;
+  line-height: 1.6;
+  background-color: #1a1a24;
+  padding: 16px;
+  border-radius: 8px;
+  margin-top: 10px;
+  white-space: pre-wrap; /* Keeps linebreaks formatting intact */
+}
+
+/* Universal Status indicators templates */
+.video-loading, .video-error {
+  background-color: #0f0f14;
+  color: #8c8ca1;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}
+
+/* Keeps the profile group on the left and the button on the right */
+.channel-bar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+/* Aligns the avatar image and the username text on the same line */
+.channel-profile-group {
+  display: flex;
+  align-items: center;
+  gap: 12px; 
+}
+
+/* Forces the avatar image to remain a uniform, clean circle */
+.channel-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Container for text layout */
+.channel-text-details {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Removes default margins from the paragraph tag for perfect vertical alignment */
+.channel-username {
+  margin: 0;
+  font-weight: 600;
+}
+
+/* Base button styling */
+.subscribe-btn {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Styling variant when NOT subscribed */
+.not-subscribed {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Styling variant when ALREADY subscribed */
+.subscribed {
+  background-color: #303030;
+  color: #ffffff;
+}
+
+/* Fallback loading text alignment */
+.channel-loading-text {
+  padding: 12px;
+}

@@ -1,0 +1,104 @@
+/* Centering page wrapper to isolate the card view */
+.edit-avatar-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0f0f14;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Central interactive layout card frame */
+.edit-avatar-card {
+  width: 100%;
+  max-width: 440px;
+  background-color: #161622;
+  border: 1px solid #2a2a3a;
+  border-radius: 16px;
+  padding: 32px;
+  box-sizing: border-box;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* Alert error response layout banner */
+.edit-avatar-error-msg {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 24px;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.edit-avatar-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.edit-avatar-label {
+  color: #cdcdde;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+}
+
+/* =======================================================
+   TEXT INPUT BOX STYLING
+   ======================================================= */
+.edit-avatar-input-file {
+  width: 100%;
+  background-color: #0f0f14;
+  color: #ffffff;
+  border: 1px solid #3e3e56;
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Smooth glow effect when the user clicks inside the text field */
+.edit-avatar-input-file:focus {
+  border-color: #ffffff;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Clean styling placeholder fallback text color description */
+.edit-avatar-input-file::placeholder {
+  color: #4e4e6a;
+}
+
+/* =======================================================
+   SUBMIT BUTTON TRIGGER
+   ======================================================= */
+.edit-avatar-submit-btn {
+  width: 100%;
+  background-color: #ffffff;
+  color: #0f0f14;
+  border: none;
+  padding: 13px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: background-color 0.2s ease;
+}
+
+.edit-avatar-submit-btn:hover:not(:disabled) {
+  background-color: #e5e7eb;
+}
+
+.edit-avatar-submit-btn:disabled {
+  background-color: #3e3e56;
+  color: #8c8ca1;
+  cursor: not-allowed;
+}

@@ -1,0 +1,155 @@
+/* Master structural centering viewport layer */
+.edit-info-page-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0f0f14;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+/* Central layout card element box container */
+.edit-info-card-box {
+  width: 100%;
+  max-width: 480px;
+  background-color: #161622;
+  border: 1px solid #2a2a3a;
+  border-radius: 16px;
+  padding: 32px;
+  box-sizing: border-box;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.edit-info-title {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 20px 0;
+  text-align: left;
+  letter-spacing: -0.5px;
+}
+
+/* 🚀 NEW: Toolbar navigation layout block grouping */
+.media-edit-navigation-toolbar {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Navigation route redirection triggers */
+.secondary-nav-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: rgba(255, 255, 255, 0.04);
+  color: #cdcdde;
+  border: 1px solid #3e3e56;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.secondary-nav-btn:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  border-color: #8c8ca1;
+}
+
+.nav-btn-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.form-inner-divider {
+  border: 0;
+  height: 1px;
+  background-color: #2a2a3a;
+  margin: 0 0 24px 0;
+}
+
+/* Red Error Notice container rules */
+.edit-info-error-alert {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.edit-info-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field-label {
+  color: #cdcdde;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Form input baseline styling configurations */
+.text-input-box {
+  background-color: #0f0f14;
+  color: #ffffff;
+  border: 1px solid #3e3e56;
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.text-input-box:focus {
+  border-color: #ffffff;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Submit Execution button styling rules */
+.edit-info-submit-btn {
+  background-color: #ffffff;
+  color: #0f0f14;
+  border: none;
+  padding: 13px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.edit-info-submit-btn:hover:not(:disabled) {
+  background-color: #e5e7eb;
+}
+
+.edit-info-submit-btn:disabled {
+  background-color: #3e3e56;
+  color: #8c8ca1;
+  cursor: not-allowed;
+}
+
+/* Mobile wrap optimizations */
+@media (max-width: 420px) {
+  .media-edit-navigation-toolbar {
+    flex-direction: column;
+  }
+}

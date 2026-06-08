@@ -1,0 +1,101 @@
+/* Centering page wrapper */
+.edit-avatar-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0f0f14;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Central card alignment anchor */
+.edit-avatar-card {
+  width: 100%;
+  max-width: 400px;
+  background-color: #161622;
+  border: 1px solid #2a2a3a;
+  border-radius: 16px;
+  padding: 32px;
+  box-sizing: border-box;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* Alert response formatting */
+.edit-avatar-error-msg {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.edit-avatar-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.edit-avatar-label {
+  color: #cdcdde;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+}
+
+/* Styling the raw file choosing input element */
+.edit-avatar-input-file {
+  width: 100%;
+  color: #8c8ca1;
+  font-size: 13px;
+  padding: 4px 0;
+}
+
+/* Custom layout rules for the browser native file-picking button handle */
+.edit-avatar-input-file::file-selector-button {
+  background-color: #2a2a3a;
+  color: #ffffff;
+  border: 1px solid #3e3e56;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-right: 12px;
+  transition: all 0.2s ease;
+}
+
+.edit-avatar-input-file::file-selector-button:hover {
+  background-color: #3e3e56;
+  border-color: #cdcdde;
+}
+
+/* Form submission action controls button */
+.edit-avatar-submit-btn {
+  width: 100%;
+  background-color: #ffffff;
+  color: #0f0f14;
+  border: none;
+  padding: 13px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: background-color 0.2s ease;
+}
+
+.edit-avatar-submit-btn:hover:not(:disabled) {
+  background-color: #e5e7eb;
+}
+
+.edit-avatar-submit-btn:disabled {
+  background-color: #3e3e56;
+  color: #8c8ca1;
+  cursor: not-allowed;
+}

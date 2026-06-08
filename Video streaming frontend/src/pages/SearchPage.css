@@ -1,0 +1,214 @@
+/* =======================================================
+   1. MAIN SEARCH FEED WRAPPER CANVAS
+   ======================================================= */
+.search-feed-container {
+  width: 100%;
+  max-width: 1360px; 
+  margin: 0 auto;
+  /* 🚀 SAFETY HEIGHT: Separates the grid completely from your top navbar */
+  margin-top: 72px; 
+  padding: 0 24px 80px 24px;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.search-results-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.6px;
+  margin-bottom: 28px;
+  padding-left: 4px;
+}
+
+/* THE GRID MATRIX ENGINE */
+.videos-grid-layout {
+  display: grid;
+  /* Large, spacious column sizes optimized for homepages and search views */
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  /* 🚀 VIDEO SPACING FIX: Wide layout gap allocation */
+  gap: 48px 24px; 
+  width: 100%;
+}
+
+/* =======================================================
+   2. VIDEO CARD SURFACE PATTERN
+   ======================================================= */
+.video-card-item {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  background-color: #14141f; /* Premium dark surface container tier */
+  border: 1px solid #252538;
+  border-radius: 16px; 
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), 
+              border-color 0.25s ease, 
+              box-shadow 0.25s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Card hover animation physics */
+.video-card-item:hover {
+  transform: translateY(-8px); /* Card lifts up cleanly */
+  border-color: #3e3e5c;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5);
+}
+
+/* =======================================================
+   3. THUMBNAIL FRAME AND ABSOLUTE TIME OVERLAY
+   ======================================================= */
+.thumbnail-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9; /* Sharp modern widescreen video ratio constraint */
+  overflow: hidden;
+  background-color: #0b0b10;
+}
+
+.video-thumbnail-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.25s ease;
+}
+
+.video-card-item:hover .video-thumbnail-img {
+  opacity: 0.9;
+}
+
+/* 🚀 TIME BADGE FIX: Explicit absolute positioning over the image bottom-right */
+.video-duration-badge {
+  position: absolute;
+  bottom: 12px; 
+  right: 12px;
+  background-color: rgba(10, 10, 15, 0.88);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(6px);
+  z-index: 2;
+}
+
+/* =======================================================
+   4. MAXIMUM HIGH-CONTRAST TEXT BLOCKS
+   ======================================================= */
+.video-info-block {
+  padding: 20px; /* Gives text content breathing room inside the container borders */
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Uniform grid spacing for descriptive text elements */
+}
+
+/* 🚀 TEXT COLOR FIX: Pure radiant white for heading readability */
+.video-title-heading {
+  font-size: 16.5px;
+  font-weight: 600;
+  line-height: 1.45;
+  margin: 0;
+  color: #ffffff; 
+  letter-spacing: -0.2px;
+  /* Double-line row clamp to safely truncate exceptionally long strings */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 🚀 CHANNEL NAME FIX: Hard forces bright light silver gray */
+.video-creator-name {
+  font-size: 14px; 
+  color: #d1d1e0; 
+  margin: 2px 0 0 0;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+/* Highlight channel links blue when card receives cursor focus */
+.video-card-item:hover .video-creator-name {
+  color: #3b82f6; 
+}
+
+/* 🚀 VIEWS FIX: High-contrast legible gray-blue layout color */
+.video-views-stat {
+  font-size: 13px; 
+  color: #9da0b4; 
+  margin: 0;
+  font-weight: 400;
+  letter-spacing: 0.1px;
+}
+
+/* =======================================================
+   5. PAGINATION INTERFACE FOOTER
+   ======================================================= */
+.pagination-controls-footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 56px;
+  min-height: 60px;
+}
+
+/* Call to Action: Load More Button Element */
+.load-more-action-btn {
+  background-color: #14141f;
+  color: #ffffff;
+  border: 1px solid #222235;
+  padding: 14px 44px;
+  border-radius: 28px; /* Pill layout shape wrapper profile */
+  font-size: 14.5px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.load-more-action-btn:hover {
+  background-color: #ffffff;
+  color: #0f0f14;
+  border-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15);
+}
+
+.spinner-loading-banner, 
+.end-of-feed-message {
+  color: #9da0b4;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* =======================================================
+   6. RESPONSIVE COMPACT MEDIA QUERIES
+   ======================================================= */
+@media (max-width: 768px) {
+  .search-feed-container {
+    margin-top: 40px;
+    padding: 0 16px 40px 16px;
+  }
+
+  .search-results-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .videos-grid-layout {
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 32px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .videos-grid-layout {
+    grid-template-columns: 1fr; /* Stacks cards in a uniform vertical column stream on mobile viewports */
+    gap: 36px;
+  }
+}

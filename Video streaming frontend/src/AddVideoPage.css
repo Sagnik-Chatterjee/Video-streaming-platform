@@ -1,0 +1,133 @@
+/* Full viewport centring background setup */
+.upload-page-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0f0f14;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+/* Card layout wrapper box matching registration rules */
+.upload-card-box {
+  width: 100%;
+  max-width: 520px;
+  background-color: #161622;
+  border: 1px solid #2a2a3a;
+  border-radius: 16px;
+  padding: 32px;
+  box-sizing: border-box;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.upload-title {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 24px 0;
+  text-align: left;
+  letter-spacing: -0.5px;
+}
+
+/* Red Exception handling panel alert banner */
+.upload-error-alert {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.upload-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.input-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field-label {
+  color: #cdcdde;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Universal Text formatting rules */
+.text-input-box {
+  background-color: #0f0f14;
+  color: #ffffff;
+  border: 1px solid #3e3e56;
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.2s ease;
+}
+
+.text-input-box:focus {
+  border-color: #ffffff;
+}
+
+/* Upgraded multi-line description input layout support */
+.textarea-box {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* File Upload Controls adjustment rules */
+.file-input-handler {
+  color: #8c8ca1;
+  font-size: 13px;
+  padding: 6px 0;
+}
+
+.file-input-handler::file-selector-button {
+  background-color: #2a2a3a;
+  color: #ffffff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-right: 12px;
+  transition: background-color 0.2s ease;
+}
+
+.file-input-handler::file-selector-button:hover {
+  background-color: #3e3e56;
+}
+
+/* Action button upload trigger controls formatting styles */
+.upload-submit-btn {
+  background-color: #ffffff;
+  color: #0f0f14;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.upload-submit-btn:hover:not(:disabled) {
+  background-color: #e5e7eb;
+}
+
+.upload-submit-btn:disabled {
+  background-color: #3e3e56;
+  color: #8c8ca1;
+  cursor: not-allowed;
+}

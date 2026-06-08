@@ -1,0 +1,213 @@
+/* =======================================================
+   1. CORE NAVBAR BASE STRUCTURE
+   ======================================================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  background-color: #14141f; /* Premium dark background surface tier */
+  border-bottom: 1px solid #222235;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 1000; /* Stays absolutely above all video card layout elements */
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.nav-container {
+  max-width: 1400px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Spreads out Logo, Search, Add Button, and Actions */
+  gap: 20px;
+}
+
+/* =======================================================
+   2. BRANDING LOGO SECTION
+   ======================================================= */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  white-space: nowrap;
+}
+
+.logo-icon {
+  color: #3b82f6; /* Modern streaming brand blue accent */
+}
+
+/* =======================================================
+   3. ACTION: ADD VIDEO BUTTON
+   ======================================================= */
+.nav-add-video-btn {
+  background-color: #ffffff;
+  color: #0f0f14;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.nav-add-video-btn:hover {
+  background-color: #e2e2e9;
+  transform: translateY(-1px);
+}
+
+/* =======================================================
+   4. CENTRALIZED SEARCH SYSTEM
+   ======================================================= */
+.nav-search-form {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  max-width: 440px; /* Limits search box from bloating too wide on big displays */
+  background-color: #0f0f14;
+  border: 1px solid #252538;
+  border-radius: 24px;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+.nav-search-form:focus-within {
+  border-color: #3b82f6; /* Glows blue when the user types */
+}
+
+.nav-search-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 10px 18px;
+  color: #ffffff;
+  font-size: 14px;
+  outline: none;
+}
+
+.nav-search-input::placeholder {
+  color: #62627a;
+}
+
+.nav-search-submit-btn {
+  background-color: #1e1e2f;
+  color: #b3b3c6;
+  border: none;
+  border-left: 1px solid #252538;
+  padding: 0 18px;
+  height: 38px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav-search-submit-btn:hover {
+  background-color: #3b82f6;
+  color: #ffffff;
+}
+
+/* =======================================================
+   5. RIGHT ACTIONS MENU (USER PROFILE & AUTH BUTTONS)
+   ======================================================= */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Generic Layout for Action Buttons */
+.nav-btn, .nav-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+/* Profile / Identity block */
+.profile-btn {
+  background-color: #1e1e2f;
+  color: #e2e2e9;
+  border: 1px solid #252538;
+}
+
+.profile-btn:hover {
+  background-color: #252538;
+  color: #ffffff;
+}
+
+/* Logout Button */
+.logout-btn {
+  background-color: transparent;
+  color: #8c8ca1;
+  border: 1px solid transparent;
+}
+
+.logout-btn:hover {
+  color: #ef4444; /* Standard alert red indicator text tint */
+  background-color: rgba(239, 68, 68, 0.08);
+}
+
+/* Sign In / Login Redirect */
+.login-link {
+  color: #b3b3c6;
+}
+
+.login-link:hover {
+  color: #ffffff;
+}
+
+/* Registration Button */
+.register-btn {
+  background-color: #3b82f6;
+  color: #ffffff;
+  border: none;
+}
+
+.register-btn:hover {
+  background-color: #2563eb;
+}
+
+/* =======================================================
+   6. RESPONSIVE LAYOUT MATRIX
+   ======================================================= */
+@media (max-width: 768px) {
+  .nav-container {
+    padding: 0 16px;
+    gap: 12px;
+  }
+
+  /* Hide textual descriptions inside minor controls on tablet resolutions */
+  .profile-btn span, 
+  .btn-text,
+  .nav-logo span {
+    display: none;
+  }
+  
+  .nav-search-form {
+    max-width: none; /* Allows search box to flex out and fill remaining space */
+  }
+}
+
+@media (max-width: 480px) {
+  /* Hides the Add Video Button completely on compact mobile viewports to prioritize search bar space */
+  .nav-add-video-btn {
+    display: none;
+  }
+}
