@@ -17,7 +17,6 @@ connectDB()
     console.log("MONGO DB Connection Failed !!!",err);
 })
 
-export default app
 
 
 /*
