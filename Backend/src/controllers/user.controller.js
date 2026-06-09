@@ -146,7 +146,7 @@ const loginUser=asyncHandler(async(req,res)=>{
         maxAge: 24*60*60*1000
     }
 
-    return res.status(200).cookie("accessToken",accessToken, options).cookie("refreshToken",refreshToken,{httpOnly:true, secure:true,samesite: "none", maxAge:10*24*60*60*1000}).json(new ApiResponse(200,{user: loggedInUser, accessToken, refreshToken},"User logged in successfully"))
+    return res.status(200).cookie("accessToken",accessToken, options).cookie("refreshToken",refreshToken,{httpOnly:true, secure:true,sameSite: "none", maxAge:10*24*60*60*1000}).json(new ApiResponse(200,{user: loggedInUser, accessToken, refreshToken},"User logged in successfully"))
 })
 
 //Logout
