@@ -142,10 +142,11 @@ const loginUser=asyncHandler(async(req,res)=>{
     const options={
         httpOnly: true,
         secure: true,
+        sameSite: "none",
         maxAge: 24*60*60*1000
     }
 
-    return res.status(200).cookie("accessToken",accessToken, options).cookie("refreshToken",refreshToken,{httpOnly:true, secure:true, maxAge:10*24*60*60*1000}).json(new ApiResponse(200,{user: loggedInUser, accessToken, refreshToken},"User logged in successfully"))
+    return res.status(200).cookie("accessToken",accessToken, options).cookie("refreshToken",refreshToken,{httpOnly:true, secure:true,samesite: "none", maxAge:10*24*60*60*1000}).json(new ApiResponse(200,{user: loggedInUser, accessToken, refreshToken},"User logged in successfully"))
 })
 
 //Logout
@@ -161,7 +162,8 @@ const logoutUser=asyncHandler(async(req,res)=>{
     )
     const options={
         httpOnly: true,
-        secure: true
+        secure: true,
+        sameSite:"none"
     }
 
     return res.status(200).clearCookie("accessToken",options).clearCookie("refreshToken",options).json(new ApiResponse(200,{},"User logged out"))
@@ -189,11 +191,12 @@ const refreshAccessToken=asyncHandler(async(req,res)=>{
         const options={
             httpOnly: true,
             secure: true,
+            sameSite:"none",
             maxAge: 24*60*60*1000
         }
         const {accessToken,newRefreshToken}=await generateAccessAndRefreshToken(user._id)
         
-        return res.status(200).cookie("accessToken",accessToken,options).cookie("refreshToken", newRefreshToken, {httpOnly:true, secure:true, maxAge: 10*24*60*60*1000}).json(
+        return res.status(200).cookie("accessToken",accessToken,options).cookie("refreshToken", newRefreshToken, {httpOnly:true, secure:true,sameSite:"none" ,maxAge: 10*24*60*60*1000}).json(
             new ApiResponse(200,{accessToken, refreshToken: newRefreshToken},"Access token refreshed successfully")
         )
     } catch (error) {
