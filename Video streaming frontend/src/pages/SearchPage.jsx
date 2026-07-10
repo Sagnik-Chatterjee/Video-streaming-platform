@@ -37,7 +37,7 @@ const navigate=useNavigate()
 
     useEffect(()=>{
         fetchSearchResults()
-    },[page])
+    },[page,query ])
 
     const handleVideoClick=(id)=>{
         navigate(`/video/${id}`)
