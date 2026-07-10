@@ -35,6 +35,11 @@ const navigate=useNavigate()
       }
     };
 
+    useEffect(() => {
+  setVideos([]);
+  setHasMore(true);
+}, [query]);
+
     useEffect(()=>{
         fetchSearchResults()
     },[page,query ])
