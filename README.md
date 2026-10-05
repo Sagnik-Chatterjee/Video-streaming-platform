@@ -365,9 +365,3 @@ npm run dev
 **Sagnik Chatterjee**
 
 GitHub: https://github.com/Sagnik-Chatterjee
-
----
-
-# 📜 License
-
-This project is licensed under the MIT License.
